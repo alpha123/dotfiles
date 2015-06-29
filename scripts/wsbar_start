@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+perl ~/scripts/i3-wsbar -c "dzen2 -geometry 300x21 -x 30 -y 1 -expand right"
+#xprop -id "$(xwininfo -name "dzen title" | sed -n 2p | cut -c 22-30)"  -f  _NET_WM_WINDOW_TYPE 32a -set _NET_WM_WINDOW_TYPE _NET_WM_WINDOW_TYPE_DOCK

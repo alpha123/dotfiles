@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+$HOME/scripts/wsbar_stop
+$HOME/scripts/wsbar_start &

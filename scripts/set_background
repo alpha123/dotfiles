@@ -1,0 +1,8 @@
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+use YAML;
+
+my $bg = YAML::LoadFile("$ENV{HOME}/.colorscheme")->{background};
+system("feh --bg-fill $bg");

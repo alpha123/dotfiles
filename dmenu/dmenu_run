@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+# Colorscheme: Day
+#output=$($HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb white -nf '#111111' -sb '#2e93f4' -sf white -fn 'xft:Source Code Pro:pixelsize=12:Regular' $@)
+
+# Colorscheme: Night
+#output=$($HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb black -nf '#ffffff' -sb '#2e93f4' -sf white -fn 'xft:Source Code Pro:pixelsize=12:Regular' $@)
+
+# Colorscheme: Rarity
+#output=$($HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb '#ebeff1' -nf '#535353' -sb '#83509f' -sf '#ebeff1' -fn 'xft:Source Code Pro:pixelsize=12:Regular' $@)
+#echo $output
+
+require 'open3'
+require 'yaml'
+
+colors = YAML.load_file("#{ENV['HOME']}/.colorscheme")['dmenu']
+output, status = Open3.capture2 "$HOME/dmenu-4.5/dmenu -x 250 -y 1 -w 800 -nb '#{colors['bg']}' -nf '#{colors['fg']}' -sb '#{colors['selected']['bg']}' -sf '#{colors['selected']['fg']}' -fn 'xft:Source Code Pro:pixelsize=12:Regular' #{ARGV.join ' '}", stdin_data: STDIN.read
+print output

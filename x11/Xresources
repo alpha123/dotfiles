@@ -1,0 +1,20 @@
+!! urxvt
+urxvt.depth: 32
+urxvt.background: [80]#000000
+urxvt.foreground: #45e900
+urxvt.urlLauncher: dwb
+urxvt.cursorBlink: true
+urxvt.font: xft:Anonymice Powerline:size=10
+urxvt.boldFont: xft:Anonymice Powerline:bold:size=10
+urxvt.letterSpace: -1
+urxvt.scrollstyle: plain
+urxvt.scrollBar: false
+urxvt.perl-ext: default,clipboard,url-select,keyboard-select
+urxvt.url-select.launcher: dwb
+urxvt.url-select.underline: true
+urxvt.keysym.M-u: perl:url-select:select_next
+urxvt.keysym.M-Escape: perl:keyboard-select:activate
+urxvt.keysym.M-s: perl:keyboard-select:search
+
+!! Emacs
+Emacs.font: Open Sans-10

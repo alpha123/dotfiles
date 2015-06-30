@@ -17,7 +17,8 @@ set $return Return
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font pango:Open Sans 0
+# When font size is 0, no text is drawn and small (~5px) bars are show.
+font pango:Muli 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -36,7 +37,7 @@ bindsym $mod+space exec ~/dmenu-4.5/dmenu_launcher
 bindsym $mod+q kill
 
 # Jump between windows quickly
-bindsym $mod+Tab exec "rofi -now -font 'Open Sans 10' -fg '#505050' -bg '#00000' -hlfg '#ffffff' -hlbg '#000000' -o 85"
+bindsym $mod+Tab exec "rofi -now -font 'Muli 10' -fg '#505050' -bg '#00000' -hlfg '#ffffff' -hlbg '#000000' -o 85"
 
 bindsym $mod+m exec "~/scripts/dmenu_i3_mark"
 bindsym $mod+g exec "~/scripts/dmenu_i3_goto"
@@ -349,12 +350,8 @@ bar {
         position top
         workspace_buttons yes
         status_command ~/scripts/status
-        #mode hide
-        #modifier $mod
-        #tray_output none
 
-        font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-        font pango:Open Sans 8
+        font pango:Muli 8
 
         colors {
                background #000000

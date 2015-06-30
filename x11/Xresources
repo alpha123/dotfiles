@@ -15,6 +15,3 @@ urxvt.url-select.underline: true
 urxvt.keysym.M-u: perl:url-select:select_next
 urxvt.keysym.M-Escape: perl:keyboard-select:activate
 urxvt.keysym.M-s: perl:keyboard-select:search
-
-!! Emacs
-Emacs.font: Open Sans-10

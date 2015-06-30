@@ -14,5 +14,5 @@ require 'open3'
 require 'yaml'
 
 colors = YAML.load_file("#{ENV['HOME']}/.colorscheme")['dmenu']
-output, status = Open3.capture2 "$HOME/dmenu-4.5/dmenu -x 250 -y 1 -w 800 -nb '#{colors['bg']}' -nf '#{colors['fg']}' -sb '#{colors['selected']['bg']}' -sf '#{colors['selected']['fg']}' -fn 'xft:Source Code Pro:pixelsize=12:Regular' #{ARGV.join ' '}", stdin_data: STDIN.read
+output, status = Open3.capture2 "$HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb '#{colors['bg']}' -nf '#{colors['fg']}' -sb '#{colors['selected']['bg']}' -sf '#{colors['selected']['fg']}' -fn 'xft:Anonymous Pro:pixelsize=11:Regular' #{ARGV.join ' '}", stdin_data: STDIN.read
 print output

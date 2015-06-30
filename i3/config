@@ -161,7 +161,7 @@ bindsym $mod+r mode "resize"
 
 # Gaps between windows
 gaps inner 12
-gaps outer 3
+gaps outer 0
 
 mode "Inner gaps" {
     bindsym plus gaps inner all plus 1

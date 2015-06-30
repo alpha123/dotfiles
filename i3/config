@@ -17,7 +17,7 @@ set $return Return
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-# When font size is 0, no text is drawn and small (~5px) bars are show.
+# When font size is 0, no text is drawn and small (~5px) bars are shown.
 font pango:Muli 0
 
 # Use Mouse+$mod to drag floating windows to their wanted position

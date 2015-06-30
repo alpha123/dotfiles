@@ -12,7 +12,7 @@ enable-webgl=true
 minimum-logical-font-size=6
 enable-page-cache=false
 cache-model=webbrowser
-sans-serif-font-family=Open Sans
+sans-serif-font-family=Muli
 prompt-color=#00ff00
 complete-searchengines=true
 update-search-delay=200
@@ -115,7 +115,7 @@ searchengine-submit-pattern=
 hint-opacity=0.80
 font-entry=
 proxy-url=
-font=Open Sans 8
+font=Muli 8
 monospace-font-family=Anonymous Pro 8
 addressbar-dns-lookup=true
 enable-universal-access-from-file-uris=true
@@ -163,7 +163,7 @@ adblocker-element-hider=true
 tab-width=100
 
 [254079336593]
-default-font-family=Open Sans
+default-font-family=Muli
 font=Anonymous Pro 8
 adblocker-element-hider=false
 enable-plugins=false

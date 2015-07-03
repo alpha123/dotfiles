@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+font=TitilliumWeb
+fontsize=144
+linespacing=-50
+background=
+foreground=
+caption=
+gravity=NorthEast
+imgsize=1420x900
+offset=20x0
+filename=
+
+while [ "$1" != "" ]; do
+    echo $1
+    case $1 in
+        -f | --font )           shift
+                                font=$1
+                                ;;
+        -s | --font-size )      shift
+				fontsize=$1
+                                ;;
+	-b | --background-color ) shift
+				background=$1
+				;;
+	-c | --foreground-color ) shift
+				foreground=$1
+				;;
+	-t | --text )           shift
+				caption=$1
+				;;
+	-g | --gravity )	shift
+				gravity=$1
+				;;
+	-i | --image-size )     shift
+				imgsize=$1
+				;;
+	-o | --offset )         shift
+				offset=$1
+    esac
+    filename=$1
+    shift
+done
+
+echo "convert -size $imgsize -font $font -pointsize $fontsize -interline-spacing $linespacing -background $background -fill $foreground -gravity $gravity -caption $caption -splice $offset $filename"
+convert -size $imgsize -font $font -pointsize $fontsize -interline-spacing $linespacing -background $background -fill $foreground -gravity $gravity caption:$caption -splice $offset $filename

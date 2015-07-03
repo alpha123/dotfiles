@@ -1,7 +1,7 @@
 !! urxvt
 urxvt.depth: 32
-urxvt.background: [80]#000000
-urxvt.foreground: #45e900
+urxvt.background: [100]#1d1f21
+urxvt.foreground: #33a179
 urxvt.urlLauncher: dwb
 urxvt.cursorBlink: true
 urxvt.font: xft:Anonymice Powerline:size=10

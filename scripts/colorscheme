@@ -46,7 +46,8 @@ def reload_everything
     # Tell i3 to reload its config and restart lxpanel to force it to reload.
     `i3-msg reload`
     # For some reason using backticks instead of system causes the & not to return immediately.
-    system("killall lxpanel; lxpanel &")
+    # I'm not currently using lxpanel
+    #system("killall lxpanel; lxpanel &")
 end
 
 def change_config(config_file, start_marker, end_marker, &get_new_config)

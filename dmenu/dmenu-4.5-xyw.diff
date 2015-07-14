@@ -1,0 +1,75 @@
+--- a/dmenu.1	2012-01-08 13:18:43.000000000 +0100
++++ b/dmenu.1	2012-12-12 22:54:01.622487570 +0100
+@@ -55,6 +55,15 @@
+ .BI \-fn " font"
+ defines the font or font set used.
+ .TP
++.BI \-x " xoffset"
++defines the offset from the left border of the screen.
++.TP
++.BI \-y " yoffset"
++defines the offset from the top border of the screen.
++.TP
++.BI \-w " width"
++defines the desired menu window width.
++.TP
+ .BI \-nb " color"
+ defines the normal background color.
+ .IR #RGB ,
+--- a/dmenu.c	2012-12-12 22:58:55.475859117 +0100
++++ b/dmenu.c	2012-12-12 23:02:21.569227230 +0100
+@@ -44,6 +44,9 @@
+ static char text[BUFSIZ] = "";
+ static int bh, mw, mh;
+ static int inputw, promptw;
++static int xoffset = 0;
++static int yoffset = 0;
++static int width = 0;
+ static size_t cursor = 0;
+ static const char *font = NULL;
+ static const char *prompt = NULL;
+@@ -90,6 +93,12 @@
+ 		else if(i+1 == argc)
+ 			usage();
+ 		/* these options take one argument */
++		else if(!strcmp(argv[i], "-x"))   /* offset from the left border of the screen */
++			xoffset = atoi(argv[++i]);
++		else if(!strcmp(argv[i], "-y"))   /* offset from the top border of the screen */
++			yoffset = atoi(argv[++i]);
++		else if(!strcmp(argv[i], "-w"))   /* defines the desired menu window width */
++			width = atoi(argv[++i]);
+ 		else if(!strcmp(argv[i], "-l"))   /* number of lines in vertical list */
+ 			lines = atoi(argv[++i]);
+ 		else if(!strcmp(argv[i], "-p"))   /* adds prompt to left of input field */
+@@ -578,7 +587,7 @@
+ 					break;
+ 
+ 		x = info[i].x_org;
+-		y = info[i].y_org + (topbar ? 0 : info[i].height - mh);
++		y = info[i].y_org + (topbar ? yoffset : info[i].height - mh - yoffset);
+ 		mw = info[i].width;
+ 		XFree(info);
+ 	}
+@@ -586,9 +595,13 @@
+ #endif
+ 	{
+ 		x = 0;
+-		y = topbar ? 0 : DisplayHeight(dc->dpy, screen) - mh;
++		y = topbar ? yoffset : DisplayHeight(dc->dpy, screen) - mh - yoffset;
+ 		mw = DisplayWidth(dc->dpy, screen);
+ 	}
++
++	x += xoffset;
++	mw = width ? width : mw;
++
+ 	promptw = prompt ? textw(dc, prompt) : 0;
+ 	inputw = MIN(inputw, mw/3);
+ 	match();
+@@ -615,6 +628,7 @@
+ void
+ usage(void) {
+ 	fputs("usage: dmenu [-b] [-f] [-i] [-l lines] [-p prompt] [-fn font]\n"
++          "             [-x xoffset] [-y yoffset] [-w width]\n"
+ 	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-v]\n", stderr);
+ 	exit(EXIT_FAILURE);
+ }

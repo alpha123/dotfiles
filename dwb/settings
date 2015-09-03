@@ -114,9 +114,9 @@ error-color=#ff0000
 searchengine-submit-pattern=
 hint-opacity=0.80
 font-entry=
-proxy-url=
+proxy-url=socks://localhost:5000
 font=Titillium Web 8
-monospace-font-family=Anonymous Pro 8
+monospace-font-family=Anonymice Powerline 8
 addressbar-dns-lookup=true
 enable-universal-access-from-file-uris=true
 background-color=#000000
@@ -161,6 +161,10 @@ hint-offset-left=0
 tab-orientation=horizontal
 adblocker-element-hider=false
 tab-width=100
+
+tabbar-height=0
+statusbar-height=0
+favicon-size=0
 
 [254079336593]
 default-font-family=Muli

@@ -1,8 +1,12 @@
 #!/usr/bin/env sh
 
+titlesize=$(xwininfo -root | grep "Width: " | cut -c 10-)
+titlesize=$(expr $titlesize - $titlesize / 8)
+
 i3status | (read line && echo $line && read line && echo $line && while :
 do
     read line
-    wintitle=$(xtitle -f "[{\"name\":\"title\",\"align\":\"center\",\"min_width\":1200,\"full_text\":\"%s\"},")
-    echo "${line/[/$wintitle}" || exit 1
+    line=$(echo $line | sed -E 's/^,?\[//')
+    wintitle=$(xtitle -f "[{\"name\":\"title\",\"align\":\"center\",\"min_width\":$titlesize,\"full_text\":\"%s\"},")
+    echo "$wintitle$line," || exit 1
 done)

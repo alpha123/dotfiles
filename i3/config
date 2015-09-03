@@ -31,19 +31,21 @@ bindsym $mod+$return exec "urxvtc -e fish"
 bindsym $mod+Shift+$return exec dwb
 
 # Start dmenu (a program launcher)
-bindsym $mod+space exec ~/dmenu-4.5/dmenu_launcher
+bindsym $mod+space exec ~/scripts/dmenu_launcher
 
 # Kill focused window
 bindsym $mod+q kill
 
 # Jump between windows quickly
-bindsym $mod+Tab exec "rofi -now -font 'Titilluion Web 10' -fg '#505050' -bg '#00000' -hlfg '#ffffff' -hlbg '#000000' -o 85"
+bindsym $mod+Tab exec "rofi -show window -font 'Titillium Web 10' -fg '#505050' -bg '#000000' -hlfg '#ffffff' -hlbg '#000000' -o 85"
 
 bindsym $mod+m exec "~/scripts/dmenu_i3_mark"
 bindsym $mod+g exec "~/scripts/dmenu_i3_goto"
 # 'grave' is the backtick
 bindsym $mod+grave exec "~/scripts/dmenu_i3_goto"
 
+# Fade a window in or out
+bindsym $mod+d exec "transset-df -a -t 0"
 
 # Change focus
 bindsym $mod+h focus left

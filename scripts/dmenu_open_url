@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-output=$(echo '' | $HOME/dmenu-4.5/dmenu_run -p "URL: ")
+output=$(echo '' | $HOME/scripts/dmenu_run -p "URL: ")
 if test $output != ""
 then
     dwb $output

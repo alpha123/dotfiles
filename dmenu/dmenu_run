@@ -1,18 +1,26 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env sh
 
 # Colorscheme: Day
 #output=$($HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb white -nf '#111111' -sb '#2e93f4' -sf white -fn 'xft:Source Code Pro:pixelsize=12:Regular' $@)
 
 # Colorscheme: Night
-#output=$($HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb black -nf '#ffffff' -sb '#2e93f4' -sf white -fn 'xft:Source Code Pro:pixelsize=12:Regular' $@)
+scale=1
+rootwidth=$(xwininfo -root | grep "Width: " | cut -c 10-)
+offset=$(echo "120 * $scale / 1" | bc)
+width=$(expr $rootwidth - $rootwidth / 8 - $offset)
+xpos=$(expr $rootwidth - $width - $offset)
+ypos=$(echo "3 * $scale / 1" | bc)
+fnsize=$(echo "9 * $scale / 1" | bc)
+echo "$rootwidth $width $xpos $ypos $fnsize"
+output=$(dmenu -x $xpos -y $ypos -w $width -nb black -nf '#ffffff' -sb '#2e93f4' -sf white -fn "xft:Anonymice\ Powerline:size=$fnsize:Regular" $@)
 
 # Colorscheme: Rarity
 #output=$($HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb '#ebeff1' -nf '#535353' -sb '#83509f' -sf '#ebeff1' -fn 'xft:Source Code Pro:pixelsize=12:Regular' $@)
-#echo $output
+echo $output
 
-require 'open3'
-require 'yaml'
+#require 'open3'
+#require 'yaml'
 
-colors = YAML.load_file("#{ENV['HOME']}/.colorscheme")['dmenu']
-output, status = Open3.capture2 "$HOME/dmenu-4.5/dmenu -x 250 -y 3 -w 800 -nb '#{colors['bg']}' -nf '#{colors['fg']}' -sb '#{colors['selected']['bg']}' -sf '#{colors['selected']['fg']}' -fn 'xft:Anonymous Pro:pixelsize=11:Regular' #{ARGV.join ' '}", stdin_data: STDIN.read
-print output
+#colors = YAML.load_file("#{ENV['HOME']}/.colorscheme")['dmenu']
+#output, status = Open3.capture2 "dmenu -x 250 -y 3 -w 800 -nb '#{colors['bg']}' -nf '#{colors['fg']}' -sb '#{colors['selected']['bg']}' -sf '#{colors['selected']['fg']}' -fn 'xft:Anonymice Powerline:pixelsize=11:Regular' #{ARGV.join ' '}", stdin_data: STDIN.read
+#print output
